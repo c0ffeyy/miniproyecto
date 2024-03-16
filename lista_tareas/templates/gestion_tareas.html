@@ -1,0 +1,28 @@
+{% extends 'layouts/navbar.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
+    <title>Gestión de Tareas</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Tareas</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Agregar Tarea</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

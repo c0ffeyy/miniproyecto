@@ -2,8 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # Plantilla para rutas:
-    # path('', views.[nombre de la función de "views.py"])
-
     path('', views.index),
+    path('detalles_tarea/', views.detalles_tarea),
+    path('gestion_tareas/', views.gestion_tareas),
 ]
