@@ -1,22 +1,21 @@
 from django.shortcuts import render, redirect
 from .models import Tarea
-from .forms import TareaForm
 
 # Create your views here.
 
+tareas = Tarea.objects.all()
+
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {
+        'tareas': tareas
+    })
 
 def detalles_tarea(request):
-    return render(request, 'detalles_tarea.html')
+    return render(request, 'detalles_tarea.html', {
+        'tareas': tareas
+    })
 
 def gestion_tareas(request):
-    if request.method == 'POST':
-        form = TareaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = TareaForm()
-    
-    return render(request, 'gestion_tareas.html', {'form': form})
+    return render(request, 'gestion_tareas.html', {
+        'tareas': tareas
+    })
