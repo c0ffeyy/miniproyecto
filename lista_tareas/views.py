@@ -3,19 +3,20 @@ from .models import Tarea
 
 # Create your views here.
 
-tareas = Tarea.objects.all()
-
 def index(request):
+    tareas = Tarea.objects.all()
     return render(request, 'index.html', {
         'tareas': tareas
     })
 
-def detalles_tarea(request):
-    return render(request, 'detalles_tarea.html', {
-        'tareas': tareas
+def parametro_tarea(request, id):
+    tareas_id = Tarea.objects.get(id=id)
+    return render(request, 'parametro_tarea.html', {
+        'tareas_id': tareas_id
     })
 
-def gestion_tareas(request):
-    return render(request, 'gestion_tareas.html', {
+def detalles_tareas(request):
+    tareas = Tarea.objects.all()
+    return render(request, 'detalles_tareas.html', {
         'tareas': tareas
     })
